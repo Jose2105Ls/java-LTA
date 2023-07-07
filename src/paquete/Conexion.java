@@ -26,9 +26,9 @@ public class Conexion {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexion = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-            JOptionPane.showMessageDialog(null, "Conexion exitosa!");
+            /*JOptionPane.showMessageDialog(null, "Conexion exitosa!");
             return conexion;
-
+             */
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
@@ -39,8 +39,9 @@ public class Conexion {
     public void cerrarConexion() throws SQLException {
         try {
 
-            conexion.close();
+            /*conexion.close();
             JOptionPane.showMessageDialog(null, "Se desconecto de la base de datos!");
+             */
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error : " + e);
             conexion.close();

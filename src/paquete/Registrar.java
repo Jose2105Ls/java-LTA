@@ -66,6 +66,11 @@ public class Registrar extends javax.swing.JFrame {
         });
 
         btn_actualizar.setText("Actualizar Datos");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,17 +132,26 @@ public class Registrar extends javax.swing.JFrame {
 
             Connection conexion = (Connection) conectar.conectar();
             PreparedStatement insertar = conexion.prepareStatement("Insert into empleados values(?,?,?,?)");
-            
+
             insertar.setString(1, "0");
             insertar.setString(2, txt_nombre.getText().trim());
             insertar.setString(3, txt_telefono.getText().trim());
             insertar.setString(4, cb_facultad.getSelectedItem().toString());
-            
+            insertar.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Datos Registrados");
+
+            conectar.cerrarConexion();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btn_registrarActionPerformed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        txt_nombre.setText("");
+        txt_telefono.setText("");
+    }//GEN-LAST:event_btn_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
